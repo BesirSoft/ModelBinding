@@ -1,0 +1,35 @@
+﻿@model string[]
+@{
+    ViewData["Title"] = "Name";
+}
+
+<h1>Name</h1>
+
+<form asp-action="Names" method="post">
+    @for (int i = 0; i < 10; i++)
+    {
+
+        <div class="form-group">
+            <label>@(i + 1)</label>
+            <input type="text" name="names" value="" class="form-control" />
+
+        </div>
+    }
+
+    <input type="submit" value="submit" class="btn btn-success" />
+
+
+</form>
+
+@foreach (var item in Model)
+{
+
+
+    <div class="form-group">
+        <label>name</label>
+        <div>@item  </div>
+
+    </div>
+
+
+}

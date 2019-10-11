@@ -46,7 +46,8 @@ namespace ModelBinding.Controllers
 
 
         [HttpPost]
-        public IActionResult Create(Customers customer)
+        public IActionResult Create([Bind(nameof(Customers.FirsNamae), nameof(Customers.FirsNamae))]Customers customer)
+             //public IActionResult Create(Customers customer)
         {
             return View("Index", customer);
         }
@@ -55,6 +56,10 @@ namespace ModelBinding.Controllers
 
 
 
+        public IActionResult Name(String[] names)
+        {
+            return View(names ?? new string[0]);
+        }
 
 
 
