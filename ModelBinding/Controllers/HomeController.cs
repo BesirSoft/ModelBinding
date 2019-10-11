@@ -10,9 +10,17 @@ namespace ModelBinding.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+
+
+        private IRepostory repostory;
+
+        public HomeController(IRepostory _repostory)
         {
-            return View();
+            repostory = _repostory;
+        }
+        public IActionResult Index(int id)
+        {
+            return View(repostory.Get(id));
         }
 
         public IActionResult Privacy()
