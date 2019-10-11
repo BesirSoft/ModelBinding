@@ -18,10 +18,47 @@ namespace ModelBinding.Controllers
         {
             repostory = _repostory;
         }
-        public IActionResult Index(int id)
+        public IActionResult Index(int? id)
         {
-            return View(repostory.Get(id));
+
+
+
+            Customers customer;
+            if (id.HasValue && (customer = repostory.Get(id.Value)) != null)
+            {
+                return View(customer);
+
+            }else{
+
+
+              return NotFound();
+            }
+
+            
         }
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(new Customers());
+        }
+
+
+        [HttpPost]
+        public IActionResult Create(Customers customer)
+        {
+            return View("Index", customer);
+        }
+
+
+
+
+
+
+
+
+
 
         public IActionResult Privacy()
         {
